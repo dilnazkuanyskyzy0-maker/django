@@ -1,0 +1,72 @@
+@@ -0,0 +1,71 @@
+class Person:
+    def __init__(self, name, age):
+        self.__name = name
+        self.__age = age
+
+
+    @property
+    def name(self):
+        return self.__name
+
+    @property
+    def age(self):
+        return self.__age
+
+
+    @age.setter
+    def age(self, value):
+        if value < 0:
+            print("Жас теріс болмауы керек!")
+        else:
+            self.__age = value
+
+
+    def display_info(self):
+        print(f"Name: {self.__name}, Age: {self.__age}")
+
+
+
+class Student(Person):
+    def __init__(self, name, age, student_id):
+        super().__init__(name, age)
+        self.__student_id = student_id
+
+    @property
+    def student_id(self):
+        return self.__student_id
+
+
+    @student_id.setter
+    def student_id(self, value):
+        if len(value) != 6:
+            print("Студент ID 6 таңбадан тұруы керек!")
+        else:
+            self.__student_id = value
+
+    def display_info(self):
+
+        super().display_info()
+        print(f"Student ID: {self.__student_id}")
+
+
+
+person = Person("Ali", 25)
+person.display_info()
+
+
+person.age = 30
+person.display_info()
+
+
+person.age = -5
+
+
+student = Student("Dana", 20, "A12345")
+student.display_info()
+
+student.student_id = "B54321"
+student.display_info()
+
+
+student.student_id = "123"
